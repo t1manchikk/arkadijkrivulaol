@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokemon Battle</title>
+  <style>
+    .pokemon { margin-bottom: 20px; }
+    .bar { width: 200px; height: 20px; background: #ccc; border-radius: 4px; }
+    .bar-inner { height: 100%; background: green; transition: 0.3s; }
+  </style>
+</head>
+<body>
+
+<div class="pokemon">
+  <h3>Pikachu</h3>
+  <div id="player1-health"></div>
+  <div class="bar"><div id="player1-health-bar" class="bar-inner"></div></div>
+</div>
+
+<div class="pokemon">
+  <h3>Charmander</h3>
+  <div id="player2-health"></div>
+  <div class="bar"><div id="player2-health-bar" class="bar-inner"></div></div>
+</div>
+
+<button id="attack-btn">⚔️ Attack</button>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>
