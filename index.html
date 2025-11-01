@@ -2,29 +2,89 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Pokemon Battle</title>
+  <title>Pokemon Arena Battle</title>
   <style>
-    .pokemon { margin-bottom: 20px; }
-    .bar { width: 200px; height: 20px; background: #ccc; border-radius: 4px; }
-    .bar-inner { height: 100%; background: green; transition: 0.3s; }
+    body {
+      background: #222;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+    .arena {
+      width: 100%;
+      height: 350px;
+      background: url('arena.jpg') center/cover no-repeat;
+      position: relative;
+      margin-bottom: 30px;
+      border: 4px solid #444;
+      border-radius: 10px;
+    }
+    .pokemon {
+      position: absolute;
+      bottom: 30px;
+      width: 180px;
+      text-align: center;
+    }
+    #player1 {
+      left: 15%;
+    }
+    #player2 {
+      right: 15%;
+    }
+    .pokemon img {
+      width: 130px;
+      height: auto;
+    }
+    .bar {
+      width: 160px;
+      height: 18px;
+      background: #555;
+      border-radius: 5px;
+      margin: auto;
+    }
+    .bar-inner {
+      height: 100%;
+      background: green;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+    #controls {
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
 
-<div class="pokemon">
-  <h3>Pikachu</h3>
-  <div id="player1-health"></div>
-  <div class="bar"><div id="player1-health-bar" class="bar-inner"></div></div>
+<h1>⚔️ Pokemon Arena ⚔️</h1>
+
+<div class="arena">
+  <div class="pokemon" id="player1">
+    <img src="pikachu.png" alt="Pikachu">
+    <div id="player1-health"></div>
+    <div class="bar"><div id="player1-health-bar" class="bar-inner"></div></div>
+  </div>
+
+  <div class="pokemon" id="player2">
+    <img src="charmander.png" alt="Charmander">
+    <div id="player2-health"></div>
+    <div class="bar"><div id="player2-health-bar" class="bar-inner"></div></div>
+  </div>
 </div>
 
-<div class="pokemon">
-  <h3>Charmander</h3>
-  <div id="player2-health"></div>
-  <div class="bar"><div id="player2-health-bar" class="bar-inner"></div></div>
+<div id="controls">
+  <button id="attack-btn">⚡ Attack</button>
+  <button id="heal-btn">❤️ Heal</button>
+  <button id="reset-btn">🔄 Reset</button>
 </div>
-
-<button id="attack-btn">⚔️ Attack</button>
 
 <script type="module" src="./main.js"></script>
+
 </body>
 </html>
