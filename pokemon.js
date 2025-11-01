@@ -7,12 +7,15 @@ export class Pokemon {
 
     this.elProgressbar = document.querySelector(selectors.hpBar);
     this.elHealth = document.querySelector(selectors.hpText);
+    this.elName = document.querySelector(selectors.nameText);
+    this.elName.innerText = this.name;
+
     this.renderHP();
   }
 
   renderHP() {
     this.elProgressbar.style.width = (this.hp / this.maxHP) * 100 + '%';
-    this.elHealth.innerText = `${this.name}: ${this.hp} / ${this.maxHP}`;
+    this.elHealth.innerText = `${this.hp} / ${this.maxHP}`;
   }
 
   changeHP(damage, logCallback) {

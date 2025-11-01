@@ -9,26 +9,34 @@ function initGame() {
     hp: 120,
     maxHP: 120,
     type: "electric",
-    selectors: { hpBar: '#player1-health-bar', hpText: '#player1-health' }
+    selectors: { 
+      hpBar: '#player1-health-bar', 
+      hpText: '#player1-health', 
+      nameText: '#player1-name'
+    }
   });
 
   player2 = new Pokemon({
     name: "Charmander",
-    hp: 125,
-    maxHP: 125,
+    hp: 120,
+    maxHP: 120,
     type: "fire",
-    selectors: { hpBar: '#player2-health-bar', hpText: '#player2-health' }
+    selectors: { 
+      hpBar: '#player2-health-bar', 
+      hpText: '#player2-health', 
+      nameText: '#player2-name'
+    }
   });
 }
 
 document.getElementById('attack-btn').addEventListener('click', () => {
-  player2.changeHP(random(30), logFight);
-  player1.changeHP(random(25), logFight);
-  if (player1.hp === 0 || player2.hp === 0) alert("⚠️ Game Over");
+  player2.changeHP(random(20), logFight);
+  player1.changeHP(random(15), logFight);
+  if (player1.hp === 0 || player2.hp === 0) alert("⚠️ Гра закінчена!");
 });
 
 document.getElementById('heal-btn').addEventListener('click', () => {
-  player1.heal(20);
+  player1.heal(15);
 });
 
 document.getElementById('reset-btn').addEventListener('click', initGame);
