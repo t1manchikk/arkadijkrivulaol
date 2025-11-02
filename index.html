@@ -1,92 +1,41 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>Pokemon Arena Battle</title>
-  <style>
-    body {
-      background: #1d1f21;
-      color: #fff;
-      font-family: Arial;
-      text-align: center;
-    }
-    .arena {
-      width: 100%;
-      height: 350px;
-      background: url('arena.jpg') center/cover no-repeat;
-      position: relative;
-      margin-bottom: 30px;
-      border: 4px solid #444;
-      border-radius: 10px;
-    }
-    .pokemon {
-      position: absolute;
-      bottom: 30px;
-      width: 200px;
-      text-align: center;
-    }
-    #player1 {
-      left: 10%;
-    }
-    #player2 {
-      right: 10%;
-    }
-    .pokemon img {
-      width: 160px;
-    }
-    .name-tag {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .bar {
-      width: 160px;
-      height: 18px;
-      background: #555;
-      border-radius: 5px;
-      margin: auto;
-    }
-    .bar-inner {
-      height: 100%;
-      background: green;
-      transition: 0.3s;
-      border-radius: 5px;
-    }
-    #controls button {
-      padding: 10px 20px;
-      margin: 10px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 6px;
-      border: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Pokemon Battle</title>
+<style>
+body { background:#222; color:#fff; font-family:Arial; text-align:center; }
+.arena { width:100%; height:300px; background:#333; border:3px solid #555; border-radius:8px; position:relative; margin-bottom:20px; }
+.pokemon { position:absolute; bottom:20px; width:200px; text-align:center; }
+#p1 { left:10%; }
+#p2 { right:10%; }
+img { width:140px; }
+.bar { width:160px; height:15px; background:#555; border-radius:4px; margin:auto; }
+.hp { height:100%; border-radius:4px; background:green; transition:0.2s; }
+button { padding:10px 20px; margin:10px; font-size:18px; cursor:pointer; border-radius:6px; border:none; }
+</style>
 </head>
 <body>
 
-<h1>⚔️ Pokemon Arena ⚔️</h1>
+<h1>⚔️ Pokemon Battle ⚔️</h1>
 
 <div class="arena">
-  <div class="pokemon" id="player1">
-    <div id="player1-name" class="name-tag"></div>
+  <div id="p1" class="pokemon">
+    <h3 id="name1"></h3>
     <img src="pikachu.png">
-    <div id="player1-health"></div>
-    <div class="bar"><div id="player1-health-bar" class="bar-inner"></div></div>
+    <div id="hptext1"></div>
+    <div class="bar"><div id="hpbar1" class="hp"></div></div>
   </div>
-
-  <div class="pokemon" id="player2">
-    <div id="player2-name" class="name-tag"></div>
+  <div id="p2" class="pokemon">
+    <h3 id="name2"></h3>
     <img src="charmander.png">
-    <div id="player2-health"></div>
-    <div class="bar"><div id="player2-health-bar" class="bar-inner"></div></div>
+    <div id="hptext2"></div>
+    <div class="bar"><div id="hpbar2" class="hp"></div></div>
   </div>
 </div>
 
-<div id="controls">
-  <button id="attack-btn">⚡ Атака</button>
-  <button id="heal-btn">❤️ Лікувати</button>
-  <button id="reset-btn">🔄 Нова битва</button>
-</div>
+<button id="attack">⚡ Удар</button>
+<button id="reset">🔄 Нова битва</button>
 
 <script type="module" src="./main.js"></script>
 </body>

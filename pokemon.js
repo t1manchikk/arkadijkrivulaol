@@ -1,32 +1,13 @@
 export class Pokemon {
-  constructor({name, hp, maxHP, type, selectors}) {
-    this.name = name;
-    this.hp = hp;
-    this.maxHP = maxHP;
-    this.type = type;
-
-    this.elProgressbar = document.querySelector(selectors.hpBar);
-    this.elHealth = document.querySelector(selectors.hpText);
-    this.elName = document.querySelector(selectors.nameText);
-    this.elName.innerText = this.name;
-
-    this.renderHP();
+  constructor(name, max){
+    this.name=name; this.maxHP=max; this.hp=max;
   }
-
-  renderHP() {
-    this.elProgressbar.style.width = (this.hp / this.maxHP) * 100 + '%';
-    this.elHealth.innerText = `${this.hp} / ${this.maxHP}`;
-  }
-
-  changeHP(damage, logCallback) {
-    const prevHP = this.hp;
-    this.hp = Math.max(this.hp - damage, 0);
-    if (logCallback) logCallback(this.name, prevHP, this.hp, damage);
-    this.renderHP();
-  }
-
-  heal(amount) {
-    this.hp = Math.min(this.hp + amount, this.maxHP);
-    this.renderHP();
+  hit(d){ this.hp=Math.max(0,this.hp-d); }
+  render(barSel,textSel){
+    const bar=document.querySelector(barSel);
+    const txt=document.querySelector(textSel);
+    bar.style.width = (this.hp/this.maxHP*100)+'%';
+    bar.style.background = this.hp< this.maxHP*0.3 ? 'red':'green';
+    txt.textContent = this.hp + ' / ' + this.maxHP;
   }
 }

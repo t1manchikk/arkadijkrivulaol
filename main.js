@@ -1,44 +1,28 @@
 import { Pokemon } from './pokemon.js';
-import { random, logFight } from './utils.js';
+import { random } from './utils.js';
 
-let player1, player2;
+let p1, p2;
+function start() {
+  p1 = new Pokemon('Pikachu',120);
+  p2 = new Pokemon('Charmander',120);
 
-function initGame() {
-  player1 = new Pokemon({
-    name: "Pikachu",
-    hp: 120,
-    maxHP: 120,
-    type: "electric",
-    selectors: { 
-      hpBar: '#player1-health-bar', 
-      hpText: '#player1-health', 
-      nameText: '#player1-name'
-    }
-  });
-
-  player2 = new Pokemon({
-    name: "Charmander",
-    hp: 120,
-    maxHP: 120,
-    type: "fire",
-    selectors: { 
-      hpBar: '#player2-health-bar', 
-      hpText: '#player2-health', 
-      nameText: '#player2-name'
-    }
-  });
+  document.querySelector('#name1').textContent = p1.name;
+  document.querySelector('#name2').textContent = p2.name;
+  p1.render('#hpbar1','#hptext1');
+  p2.render('#hpbar2','#hptext2');
 }
 
-document.getElementById('attack-btn').addEventListener('click', () => {
-  player2.changeHP(random(20), logFight);
-  player1.changeHP(random(15), logFight);
-  if (player1.hp === 0 || player2.hp === 0) alert("⚠️ Гра закінчена!");
-});
+document.querySelector('#attack').onclick = () => {
+  if(p1.hp<=0 || p2.hp<=0) return;
+  let dmg = random(20);
+  p2.hit(dmg);
+  p2.render('#hpbar2','#hptext2');
+  if(p2.hp<=0) return;
+  let dmg2 = random(15);
+  p1.hit(dmg2);
+  p1.render('#hpbar1','#hptext1');
+};
 
-document.getElementById('heal-btn').addEventListener('click', () => {
-  player1.heal(15);
-});
+document.querySelector('#reset').onclick = start;
 
-document.getElementById('reset-btn').addEventListener('click', initGame);
-
-initGame();
+start();
